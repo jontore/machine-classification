@@ -5,17 +5,8 @@ def preprocess(data_set = "../datasets/fertility.txt", test_size=0.2, random_sta
     ### the words (features) and authors (labels), already largely preprocessed
     ### this preprocessing will be repeated in the text learning mini-project
     datasets_file_handler = open(data_set, "r")
-    data_dict = {
-        'season': [],
-        'age': [],
-        'child_diseases': [],
-        'accident': [],
-        'surgical_intervention': [],
-        'high_fevers': [],
-        'alcohol_consumption': [],
-        'smoking': [],
-        'number_of_hours_sitting': [],
-    }
+    keys = ['season', 'age', 'child_diseases', 'accident', 'surgical_intervention', 'high_fevers', 'alcohol_consumption', 'smoking', 'number_of_hours_sitting']
+    data_dict = {}
 
     labels = []
     features = []
@@ -24,8 +15,11 @@ def preprocess(data_set = "../datasets/fertility.txt", test_size=0.2, random_sta
     for line in datasets_file_handler:
         stripped_line = line.rstrip();
         lines_data = stripped_line.split(',')
-        for idx, key in enumerate(data_dict.keys()):
-            data_dict[key].append(lines_data[idx])
+        for idx, key in enumerate(keys):
+            if data_dict.get(key):
+                data_dict[key].append(lines_data[idx])
+            else:
+                data_dict[key] = [lines_data[idx]]
 
         feature = np.array(lines_data[0:-1])
         features.append(to_float(feature))
