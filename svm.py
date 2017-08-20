@@ -23,12 +23,21 @@ skf = StratifiedKFold(n_splits=12)
 C = 2
 gamma = 0.2
 
-tuned_parameters = [
-    { 'kernel': ['rbf'],
-      'gamma': [1, 0.8, 0.5, 0.1, 1e-2, 1e-3, 1e-4],
-      'C': [1, 2, 4, 10, 100, 1000]
-    }
-]
+tuned_parameters = {
+    'accuracy': [
+        { 'kernel': ['rbf'],
+          'gamma': [0.775],
+          'C': [1]
+        }
+    ],
+    'roc_auc': [
+        { 'kernel': ['rbf'],
+          'gamma': [0.15635625],
+          'C': [123]
+        }
+    ]
+}
+
 
 scores = ['accuracy', 'roc_auc']
 
@@ -36,16 +45,17 @@ best_params = {
     'accuracy': [],
     'roc_auc': []
 }
-aucs = []
-accs = []
+
 for score in scores:
+    aucs = []
+    accs = []
     for train_idx, test_idx in skf.split(features, labels):
         features_train = map(lambda idx: features[idx], train_idx)
         labels_train = map(lambda idx: labels[idx], train_idx)
         features_test = map(lambda idx: features[idx], test_idx)
         labels_test = map(lambda idx: labels[idx], test_idx)
 
-        clf = GridSearchCV(svm.SVC(probability=True), tuned_parameters, cv=5,
+        clf = GridSearchCV(svm.SVC(probability=True), tuned_parameters[score], cv=5,
                            scoring=score)
         clf.fit(features_train, labels_train)
 

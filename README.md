@@ -47,9 +47,10 @@ For SVM we used accuracy as well as AUC, which are the two most common ways to e
 
 The best possible result achieved with SVC, with the average over 12 fold.
 
-| Classifier    | Accuracy      | AUC             |
-| ------------- | ------------- | --------------- |
-| SVC           | 0.87962962963 | 0.502976190476  |
+| Classifier             | Accuracy      | AUC             |
+| -------------------    | ------------- | --------------- |
+| SVC (accurancy_params) | 0.87962962963 | 0.440476190476  |
+| SVC (roc_auc_params)  | 0.748842592593 | 0.443452380952  |
 
 
 # Resources
