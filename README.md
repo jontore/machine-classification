@@ -21,5 +21,22 @@ Also tried other such as SelectFwe which selects based on the family wise error 
 ### Important features
 The two most important features identified by SelectKBest are alcohol and age.
 
+## Scaling
+Dataset is already scaled.
+
 ### Prediction
 Used different classifiers even though the score is good, however plotting the prediction reveals that the estimations are not very good. Predicting that everyone is fertile gives a relative high score since there are only 9% infertile in the data set, so if everyone is fertile the accuracy is 90%.  
+
+## SVM
+Using StratifiedKFold in order to split the data 10 ways, and calculating average f1 and accuracy for them.
+Tested out different SVM algorithms with little or not a big difference in the result set, using SVC (C-Support Vector Classification.)
+
+
+## Evaluation
+For SVM we used accuracy as well as AUC, which are the two most common ways to evaluate binary classifiers.
+
+The best possible result achieved with SVC, with the average over 12 fold.
+
+| Classifier    | Accuracy      | AUC             |
+| ------------- | ------------- | --------------- |
+| SVC           | 0.87962962963 | 0.502976190476  |
