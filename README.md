@@ -31,6 +31,16 @@ Used different classifiers even though the score is good, however plotting the p
 Using StratifiedKFold in order to split the data 10 ways, and calculating average f1 and accuracy for them.
 Tested out different SVM algorithms with little or not a big difference in the result set, using SVC (C-Support Vector Classification.)
 
+## Tuning
+Used a gridsearch to find the best parameters with accurace, and roc_auc, as scoring.
+
+The best average parameters over 12 folds where.
+
+| Scoring       | C             | gamma           |
+| ------------- | ------------- | --------------- |
+| accuracy      | 1             | 0.775  |
+| roc_auc       | 111           | 0.141808333333  |
+
 
 ## Evaluation
 For SVM we used accuracy as well as AUC, which are the two most common ways to evaluate binary classifiers.
