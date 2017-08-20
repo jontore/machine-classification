@@ -40,3 +40,8 @@ The best possible result achieved with SVC, with the average over 12 fold.
 | Classifier    | Accuracy      | AUC             |
 | ------------- | ------------- | --------------- |
 | SVC           | 0.87962962963 | 0.502976190476  |
+
+
+# Resources
+- [AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3755824/
